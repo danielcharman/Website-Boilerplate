@@ -18807,38 +18807,6 @@ if ("development" !== 'production') {
 module.exports = warning;
 },{"136":136}]},{},[1])(1)
 });
-// Based off https://github.com/ForbesLindesay/umd/blob/master/template.js
-;(function(f) {
-  // CommonJS
-  if (typeof exports === "object" && typeof module !== "undefined") {
-    module.exports = f(require('react'));
-
-  // RequireJS
-  } else if (typeof define === "function" && define.amd) {
-    define(['react'], f);
-
-  // <script>
-  } else {
-    var g;
-    if (typeof window !== "undefined") {
-      g = window;
-    } else if (typeof global !== "undefined") {
-      g = global;
-    } else if (typeof self !== "undefined") {
-      g = self;
-    } else {
-      // works providing we're not in "use strict";
-      // needed for Java 8 Nashorn
-      // see https://github.com/facebook/react/issues/3037
-      g = this;
-    }
-    g.ReactDOM = f(g.React);
-  }
-
-})(function(React) {
-  return React.__SECRET_DOM_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-});
-
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -42799,35 +42767,19 @@ if (typeof jQuery === 'undefined') {
 
 }).call(this);
 
-'use strict';
-
-// let React = require('react');
-
-var bob = function bob(e) {
-	console.log(e);
-};
-
-bob('arrow function yo');
-
-var ipsumText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.';
-
-ReactDOM.render(React.createElement(
-	'div',
-	null,
-	'// Your work here'
-), document.getElementById('impl'));
-
 var application = {
 
-	init: function init() {
+	init: function() {
 		var self = this;
+
+
 
 		return true;
 	}
 
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
 
 	$('.chosen').chosen();
 
@@ -42848,19 +42800,18 @@ $(document).ready(function () {
 		nav: false,
 		autoplay: true,
 		autoplayTimeout: 5000,
-		responsive: {
-			0: {
-				items: 2
+		responsive:{
+			0:{
+				items:2
 			},
-			600: {
-				items: 4
+			600:{
+				items:4
 			},
-			1000: {
-				items: 5
+			1000:{
+				items:5
 			}
 		}
 	});
 
 	application.init();
 });
-//# sourceMappingURL=app.js.map

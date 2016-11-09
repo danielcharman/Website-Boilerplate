@@ -27,7 +27,9 @@ module.exports = function (grunt) {
 
 		watch: {
 			js: {
-				files: ['<%= config.paths.development %>js/*.js'],
+				files: [
+					'<%= config.paths.development %>js/*.jsx'
+				],
 				tasks: ['build']
 			},
 			scss: {
@@ -43,23 +45,35 @@ module.exports = function (grunt) {
 			}
 		},
 
-		uglify: {
+		concat: {
 			options: {
-				compile: true,
-				compress: false
+				stripBanners: true
 			},
 			application: {
+				src: [
+					'<%= config.paths.nodeModules %>react/dist/react.js',
+					'<%= config.paths.nodeModules %>react-dom/dist/react-dom.js',
+					'<%= config.paths.nodeModules %>jquery/dist/jquery.js',
+					'<%= config.paths.nodeModules %>moment/moment.js',
+					'<%= config.paths.nodeModules %>bootstrap/dist/js/bootstrap.js',
+					'<%= config.paths.nodeModules %>owl.carousel/dist/owl.carousel.js',
+					'<%= config.paths.nodeModules %>jquery-match-height/dist/jquery.matchHeight.js',
+					'<%= config.paths.nodeModules %>eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
+					'<%= config.paths.nodeModules %>chosen-js/chosen.jquery.js',
+					'<%= config.paths.development %>js/app.js'
+				],
+				dest: '<%= config.paths.production %>assets/js/bundle.js',
+			}
+		},
+
+		babel: {
+			options: {
+				sourceMap: true,
+				presets: ['react', 'es2015', 'stage-0']
+			},
+			dist: {
 				files: {
-					'<%= config.paths.production %>assets/js/bundle.js': [
-						'<%= config.paths.nodeModules %>jquery/dist/jquery.js',
-						'<%= config.paths.nodeModules %>moment/moment.js',
-						'<%= config.paths.nodeModules %>bootstrap/dist/js/bootstrap.js',
-						'<%= config.paths.nodeModules %>owl.carousel/dist/owl.carousel.js',
-						'<%= config.paths.nodeModules %>jquery-match-height/dist/jquery.matchHeight.js',
-						'<%= config.paths.nodeModules %>eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
-						'<%= config.paths.nodeModules %>chosen-js/chosen.jquery.js',
-						'<%= config.paths.development %>js/app.js'
-					]
+					'<%= config.paths.development %>js/app.js': '<%= config.paths.development %>js/app.jsx'
 				}
 			}
 		},
@@ -77,10 +91,10 @@ module.exports = function (grunt) {
 
 		includes: {
 			files: {
-				src: 		'./*.html',
-				dest: 		config.paths.production,
-				flatten: 	true,
-				cwd: 		config.paths.development + 'pages/',
+				src: './*.html',
+				dest: config.paths.production,
+				flatten: true,
+				cwd: config.paths.development + 'pages/',
 				options: {
 					silent: true
 				}
@@ -90,12 +104,12 @@ module.exports = function (grunt) {
 		copy: {
 			chosenJS: {
 				src: '<%= config.paths.nodeModules %>chosen-js/chosen.css',
-				dest: '<%= config.paths.development %>styles/vendor/chosen.scss'
+				dest: '<%= config.paths.development %>styles/components/_chosen.scss'
 			},
 			bootstrapFonts: {
 				expand: true,
-  			flatten: true,
-  			filter: 'isFile',
+				flatten: true,
+				filter: 'isFile',
 				src: '<%= config.paths.nodeModules %>bootstrap/fonts/**',
 				dest: '<%= config.paths.production %>assets/fonts/bootstrap'
 			}
@@ -104,12 +118,13 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-http-server');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-includes');
+	grunt.loadNpmTasks('grunt-babel');
 
 	grunt.registerTask('server', 			['http-server']);
-	grunt.registerTask('build', 			['copy', 'includes', 'uglify', 'sass', 'watch']);
+	grunt.registerTask('build', 			['copy', 'includes', 'babel', 'concat', 'sass', 'watch']);
 
 };

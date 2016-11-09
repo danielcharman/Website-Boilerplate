@@ -1,32 +1,34 @@
-'use strict';
-
 // let React = require('react');
 
-var bob = function bob(e) {
-	console.log(e);
+let bob = (e) => {
+  console.log(e);
 };
 
 bob('arrow function yo');
 
 var ipsumText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.';
 
-ReactDOM.render(React.createElement(
-	'div',
-	null,
-	'// Your work here'
-), document.getElementById('impl'));
+ReactDOM.render(
+  <div>
+    // Your work here
+  </div>,
+  document.getElementById('impl')
+);
+
 
 var application = {
 
-	init: function init() {
+	init: function() {
 		var self = this;
+
+
 
 		return true;
 	}
 
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
 
 	$('.chosen').chosen();
 
@@ -47,19 +49,18 @@ $(document).ready(function () {
 		nav: false,
 		autoplay: true,
 		autoplayTimeout: 5000,
-		responsive: {
-			0: {
-				items: 2
+		responsive:{
+			0:{
+				items:2
 			},
-			600: {
-				items: 4
+			600:{
+				items:4
 			},
-			1000: {
-				items: 5
+			1000:{
+				items:5
 			}
 		}
 	});
 
 	application.init();
 });
-//# sourceMappingURL=app.js.map
