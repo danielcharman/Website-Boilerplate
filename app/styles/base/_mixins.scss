@@ -1,18 +1,18 @@
 @mixin breakpoint($point) {
   @if $point == xlarge {
-    @media (min-width: $breakpoint-xl) { @content; }
+    @media (max-width: $breakpoint-xl) { @content; }
   }
   @else if $point == large {
-    @media (min-width: $breakpoint-lg) { @content; }
+    @media (max-width: $breakpoint-lg) { @content; }
   }
   @else if $point == medium {
-    @media (min-width: $breakpoint-md) { @content; }
+    @media (max-width: $breakpoint-md) { @content; }
   }
   @else if $point == small {
-    @media (min-width: $breakpoint-sm)  { @content; }
+    @media (max-width: $breakpoint-sm)  { @content; }
   }
   @else if $point == xsmall {
-    @media (min-width: $breakpoint-xs)  { @content; }
+    @media (max-width: $breakpoint-xs)  { @content; }
   }
 }
 
