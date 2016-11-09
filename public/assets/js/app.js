@@ -1,4 +1,6 @@
-$(document).ready(function() {
+'use strict';
+
+$(document).ready(function () {
 
 	// $('.chosen').chosen();
 	//
@@ -32,21 +34,24 @@ $(document).ready(function() {
 	// 	}
 	// });
 
-	$('.header-menu .btn').on('click', function(e) {
+	$('.header-menu .btn').on('click', function (e) {
 		$(this).parent().find('.menu').toggleClass('open');
 	});
-
 });
 
 //testing es6 and jsx example
-let sampleText = 'Testing ES6 & JSX support';
-let arrowFunc = (e) => {
-  return e;
+var sampleText = 'Testing ES6 & JSX support';
+var arrowFunc = function arrowFunc(e) {
+	return e;
 };
 
-ReactDOM.render(
-  <div>
-    <p><i className="fa fa-check"></i>{arrowFunc(sampleText)}</p>
-  </div>,
-  document.getElementById('example')
-);
+ReactDOM.render(React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'p',
+		null,
+		React.createElement('i', { className: 'fa fa-check' }),
+		arrowFunc(sampleText)
+	)
+), document.getElementById('example'));

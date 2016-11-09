@@ -1,0 +1,13 @@
+.site-footer {
+  padding: 30px 0;
+
+  @include breakpoint(small) {
+    padding: 15px 0;
+  }
+
+  .container {
+    padding-top: 30px;
+    @include alpha-border('border-top', 1px, solid, $color-black, 0.1);
+  }
+
+}

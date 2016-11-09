@@ -1,0 +1,101 @@
+.site-header {
+  padding: 30px 0;
+  position: relative;
+
+  @include breakpoint(small) {
+    height: 90px;
+    padding: 15px 0;
+  }
+
+  .logo {
+    position: absolute;
+    max-width: 150px;
+
+    @include breakpoint(small) {
+      max-width: 60px;
+    }
+  }
+
+  .header-menu {
+    float: right;
+    position: relative;
+
+    @include breakpoint(small) {
+      float: left;
+      width: 100%;
+    }
+
+    .btn {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 0;
+      padding: 0;
+      line-height: 1;
+      @include font-size(25);
+
+      @include breakpoint(small) {
+        display: block;
+      }
+    }
+
+    .menu {
+      float: right;
+      margin: 60px 0 0;
+
+      @include breakpoint(small) {
+        display: none;
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        background-color: $menu-dropdown-color;
+      }
+
+      &.open {
+        @include breakpoint(small) {
+          display: block;
+        }
+      }
+
+      & > li {
+        @include border-radius-all($radius-size);
+        margin: 0 3px;
+
+        @include breakpoint(small) {
+          @include border-radius-all(0);
+        }
+      }
+
+      li {
+        @include alpha-color($color-black, 0.5);
+        @include alpha-background($color-black, 0.1);
+
+        @include breakpoint(small) {
+          background: none;
+        }
+
+        &:hover {
+          @include alpha-background($color-black, 0.2);
+          @include alpha-color($color-black, 1);
+        }
+
+        a {
+          padding: 10px 20px;
+
+          @include breakpoint(small) {
+            padding: 15px;
+          }
+        }
+      }
+
+      .submenu {
+        width: 200px;
+        background-color: $menu-dropdown-color;
+
+        @include breakpoint(small) {
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+}

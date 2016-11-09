@@ -1,0 +1,41 @@
+.menu, .menu ul {
+  @include reset-list();
+}
+
+.menu {
+  & > li {
+    float: left;
+    position: relative;
+
+    @include breakpoint(small) {
+      float: none;
+    }
+  }
+
+  li {
+    &:hover {
+      & > .submenu {
+        display: block;
+      }
+    }
+
+    a {
+      display: block;
+      color: inherit;
+    }
+  }
+
+  .submenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 200px;
+    z-index: 10;
+
+    @include breakpoint(small) {
+      display: block;
+      position: relative;
+      width: 100%;
+    }
+  }
+}

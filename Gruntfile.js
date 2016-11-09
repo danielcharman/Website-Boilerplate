@@ -28,20 +28,20 @@ module.exports = function (grunt) {
 		watch: {
 			js: {
 				files: [
-					'<%= config.paths.development %>js/*.jsx'
+					'<%= config.paths.development %>jsx/app.jsx'
 				],
-				tasks: ['build']
+				tasks: ['babel', 'concat']
 			},
 			scss: {
 				files: ['<%= config.paths.development %>styles/**'],
-				tasks: ['build']
+				tasks: ['sass']
 			},
 			html: {
 				files: [
 					'<%= config.paths.development %>pages/*.html',
 					'<%= config.paths.development %>partials/*.html'
 				],
-				tasks: ['build']
+				tasks: ['includes']
 			}
 		},
 
@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 					'<%= config.paths.nodeModules %>jquery-match-height/dist/jquery.matchHeight.js',
 					'<%= config.paths.nodeModules %>eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
 					'<%= config.paths.nodeModules %>chosen-js/chosen.jquery.js',
-					'<%= config.paths.development %>jsx/app.compiled.jsx'
+					'<%= config.paths.production %>assets/js/app.js'
 				],
 				dest: '<%= config.paths.production %>assets/js/bundle.js',
 			}
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 			},
 			dist: {
 				files: {
-					'<%= config.paths.development %>jsx/app.compiled.jsx': '<%= config.paths.development %>jsx/app.jsx'
+					'<%= config.paths.production %>assets/js/app.js': '<%= config.paths.development %>jsx/app.jsx'
 				}
 			}
 		},
@@ -113,6 +113,13 @@ module.exports = function (grunt) {
 				filter: 'isFile',
 				src: '<%= config.paths.nodeModules %>bootstrap/fonts/**',
 				dest: '<%= config.paths.production %>assets/fonts/bootstrap'
+			},
+			fontAwesomeFonts: {
+				expand: true,
+				flatten: true,
+				filter: 'isFile',
+				src: '<%= config.paths.nodeModules %>font-awesome/fonts/**',
+				dest: '<%= config.paths.production %>assets/fonts'
 			}
 		},
 
@@ -124,7 +131,7 @@ module.exports = function (grunt) {
 			  '<%= config.paths.production %>*.html'
 		  ],
 		  postClean: [
-		  	'<%= config.paths.development %>jsx/app.compiled.jsx'
+		  	'<%= config.paths.production %>assets/js/app.js'
 		  ]
 		}
 	});

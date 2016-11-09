@@ -31,6 +31,10 @@
   padding: 0;
 }
 
+@mixin alpha-border($type, $size, $pattern, $color, $alpha) {
+  #{$type}: $size $pattern rgba(red($color), green($color), blue($color), $alpha);
+}
+
 @mixin alpha-color($color, $alpha) {
   color: rgba(red($color), green($color), blue($color), $alpha);
 }
@@ -39,9 +43,25 @@
   background-color: rgba(red($color), green($color), blue($color), $alpha);
 }
 
-@mixin border-radius($radius) {
+@mixin border-radius-all($radius) {
   -webkit-border-radius: $radius;
   border-radius: $radius;
+  background-clip: padding-box;
+}
+
+@mixin border-radius($topright: 0, $bottomright: 0, $bottomleft: 0, $topleft: 0) {
+	-webkit-border-top-right-radius: $topright;
+	-webkit-border-bottom-right-radius: $bottomright;
+	-webkit-border-bottom-left-radius: $bottomleft;
+	-webkit-border-top-left-radius: $topleft;
+	-moz-border-radius-topright: $topright;
+	-moz-border-radius-bottomright: $bottomright;
+	-moz-border-radius-bottomleft: $bottomleft;
+	-moz-border-radius-topleft: $topleft;
+	border-top-right-radius: $topright;
+	border-bottom-right-radius: $bottomright;
+	border-bottom-left-radius: $bottomleft;
+	border-top-left-radius: $topleft;
   background-clip: padding-box;
 }
 

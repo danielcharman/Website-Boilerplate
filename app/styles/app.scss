@@ -3,13 +3,17 @@
 @import "../../node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker";
 @import "../../node_modules/owl.carousel/src/scss/owl.carousel";
 @import "../../node_modules/owl.carousel/src/scss/theme.default";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
 
 //base
 @import "base/variables";
 @import "base/mixins";
 @import "base/fonts";
-@import "base/core";
+@import "base/common";
 
 //components
+@import "components/body";
+@import "components/menus";
+@import "components/header";
+@import "components/footer";
 @import "components/chosen";
-@import "components/component";
