@@ -1,0 +1,16 @@
+body {
+  font-family: 'Roboto';
+  @include font-size(20);
+
+  @include breakpoint(large) {
+    @include font-size(18);
+  }
+
+  @include breakpoint(medium) {
+    @include font-size(16);
+  }
+
+  @include breakpoint(small) {
+    @include font-size(14);
+  }
+}
