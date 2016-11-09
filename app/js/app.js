@@ -11,6 +11,7 @@ var application = {
 };
 
 $(document).ready(function() {
+
 	$('.chosen').chosen();
 
 	$('.date-picker').datetimepicker({
@@ -25,9 +26,9 @@ $(document).ready(function() {
 	});
 
 	$('.owl-carousel').owlCarousel({
-		loop:true,
-		margin:10,
-		nav:false,
+		loop: true,
+		margin: 10,
+		nav: false,
 		autoplay: true,
 		autoplayTimeout: 5000,
 		responsive:{
@@ -42,7 +43,6 @@ $(document).ready(function() {
 			}
 		}
 	});
-
 
 	application.init();
 });
