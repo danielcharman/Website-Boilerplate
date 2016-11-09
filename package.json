@@ -22,6 +22,7 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "*",
     "grunt-contrib-concat": "*",
+    "grunt-contrib-clean": "*",
     "grunt-http-server": "*",
     "grunt-includes": "*",
     "jquery": "^2.2.1",
@@ -34,7 +35,7 @@
     "react-dom": "^0.14.7"
   },
   "scripts": {
-    "server": "grunt server",
+    "server": "grunt http-server",
     "build": "grunt build"
   }
 }

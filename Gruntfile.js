@@ -60,7 +60,7 @@ module.exports = function (grunt) {
 					'<%= config.paths.nodeModules %>jquery-match-height/dist/jquery.matchHeight.js',
 					'<%= config.paths.nodeModules %>eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js',
 					'<%= config.paths.nodeModules %>chosen-js/chosen.jquery.js',
-					'<%= config.paths.development %>js/app.js'
+					'<%= config.paths.development %>jsx/app.compiled.jsx'
 				],
 				dest: '<%= config.paths.production %>assets/js/bundle.js',
 			}
@@ -68,12 +68,12 @@ module.exports = function (grunt) {
 
 		babel: {
 			options: {
-				sourceMap: true,
+				sourceMap: false,
 				presets: ['react', 'es2015', 'stage-0']
 			},
 			dist: {
 				files: {
-					'<%= config.paths.development %>js/app.js': '<%= config.paths.development %>js/app.jsx'
+					'<%= config.paths.development %>jsx/app.compiled.jsx': '<%= config.paths.development %>jsx/app.jsx'
 				}
 			}
 		},
@@ -81,6 +81,7 @@ module.exports = function (grunt) {
 		sass: {
 			dist: {
 				options: {
+					sourcemap: 'none',
 					style: 'compressed'
 				},
 				files: {
@@ -113,6 +114,18 @@ module.exports = function (grunt) {
 				src: '<%= config.paths.nodeModules %>bootstrap/fonts/**',
 				dest: '<%= config.paths.production %>assets/fonts/bootstrap'
 			}
+		},
+
+		clean: {
+		  preClean: [
+		  	'<%= config.paths.production %>assets/css/**',
+			  '<%= config.paths.production %>assets/js/**',
+			  '<%= config.paths.production %>assets/fonts/**',
+			  '<%= config.paths.production %>*.html'
+		  ],
+		  postClean: [
+		  	'<%= config.paths.development %>jsx/app.compiled.jsx'
+		  ]
 		}
 	});
 
@@ -121,10 +134,19 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-babel');
 
-	grunt.registerTask('server', 			['http-server']);
-	grunt.registerTask('build', 			['copy', 'includes', 'babel', 'concat', 'sass', 'watch']);
+	grunt.registerTask('build', [
+		'clean:preClean',
+		'copy',
+		'includes',
+		'babel',
+		'concat',
+		'sass',
+		'clean:postClean',
+		'watch'
+	]);
 
 };
