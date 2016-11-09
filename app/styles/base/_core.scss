@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  cursor: default;
+}
+
 body {
   font-family: 'Roboto';
   @include font-size(20);
@@ -13,4 +18,76 @@ body {
   @include breakpoint(small) {
     @include font-size(14);
   }
+}
+
+.container {
+  padding: 0 30px;
+
+  @include breakpoint(small) {
+    padding: 0 15px;
+  }
+}
+
+img {
+  &[align=left], .pull-left {
+    margin: 0 20px 15px 0;
+
+    @include breakpoint(large) {
+      width: 100%;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @include breakpoint(small) {
+      margin: 0 0 15px;
+      max-width: 100%;
+    }
+  }
+  &[align=right], .pull-right {
+    margin: 0 0 15px 20px;
+
+    @include breakpoint(large) {
+      width: 100%;
+      max-width: 50%;
+      height: auto;
+    }
+
+    @include breakpoint(small) {
+      margin: 0 0 15px;
+      max-width: 100%;
+    }
+  }
+}
+
+.fa {
+  vertical-align: baseline;
+}
+
+a {
+  font-size: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  @include remove-select();
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &[href="#"] {
+    cursor: default;
+  }
+}
+
+a[href^="http://maps.google.com/maps"] {
+  display: none !important
+}
+
+a[href^="https://maps.google.com/maps"] {
+  display: none !important
+}
+
+.gmnoprint a,
+.gmnoprint span,
+.gm-style-cc {
+  display: none;
 }
