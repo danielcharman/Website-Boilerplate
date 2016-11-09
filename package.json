@@ -1,0 +1,34 @@
+{
+  "name": "website-boilerplate",
+  "description": "Website Boilerplate",
+  "version": "1.0.0",
+  "author": "Daniel Charman",
+  "license": "MIT",
+  "http": {
+    "host": "127.0.0.1",
+    "port": 1986
+  },
+  "devDependencies": {
+    "OwlCarousel2": "https://github.com/OwlCarousel2/OwlCarousel2.git",
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
+    "chosen-js": "^1.6.2",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.43",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-http-server": "*",
+    "grunt-includes": "*",
+    "jquery": "^2.2.1",
+    "jquery-match-height": "^0.7.0",
+    "moment": "^2.15.2"
+  },
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "scripts": {
+    "server": "grunt server",
+    "build": "grunt build"
+  }
+}

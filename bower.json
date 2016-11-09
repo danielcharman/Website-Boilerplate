@@ -1,0 +1,10 @@
+{
+	"name": 		"acumen3-website",
+	"description":  "",
+	"version": 		"0.1.0",
+	"dependencies": {
+		"mixins":     			"https://danielcharman@bitbucket.org/mortar/mixins.git",
+		"OwlCarousel2":     	"https://github.com/OwlCarousel2/OwlCarousel2.git",
+		"odometer":     		"https://github.com/HubSpot/odometer.git"
+	}
+}
