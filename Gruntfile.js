@@ -127,7 +127,6 @@ module.exports = function (grunt) {
 		  preClean: [
 		  	'<%= config.paths.production %>assets/css/**',
 			  '<%= config.paths.production %>assets/js/**',
-			  '<%= config.paths.production %>assets/fonts/**',
 			  '<%= config.paths.production %>*.html'
 		  ],
 		  postClean: [
